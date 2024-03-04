@@ -1,7 +1,8 @@
-import React,{useRef} from "react";
+import React, { useRef, useState } from "react";
 import "./Contact.scss";
 import profile from "../assets/profile_1.jpg";
-import up from '../assets/sort_down.gif'
+import up from "../assets/sort_down.gif";
+import { convertToBase64 } from "../helper/convert";
 let contacts = [
   {
     id: 1,
@@ -41,19 +42,24 @@ let contacts = [
   },
 ];
 const Contact = () => {
-  const myRef = useRef(null)
+  const myRef = useRef(null);
+  const executeScroll = () => myRef.current.scrollIntoView();
+  let [author_pic, setAuthor_Pic] = useState();
+  console.log(author_pic);
+  //Formik does not support file upload so we could create handler :
+  const onUpload = async (e) => {
+    let base64 = await convertToBase64(e.target.files[0]);
 
-  const executeScroll = () => myRef.current.scrollIntoView() 
+    setAuthor_Pic(base64);
+  };
   return (
     <>
-      <div className="contact_container"  >
- 
+      <div className="contact_container">
         <div className="bring_me_top">
           <img onClick={executeScroll} src={up} alt="up" />
-     
         </div>
-            {/* Right Side */}
-            <div className="form_list_box" >
+        {/* Right Side */}
+        <div className="form_list_box">
           <div className="form_title">
             <h4>Create Contact List</h4>
           </div>
@@ -63,12 +69,21 @@ const Contact = () => {
               <h4>Upload their Photo</h4>
 
               <label htmlFor="profile">
-                <img src={profile} name="profile" alt="profile" />
+                <img
+                  src={author_pic != undefined ? author_pic : profile}
+                  name="profile"
+                  alt="profile"
+                />
                 {/* <img src={upload}  name="profile" alt="profile"  /> */}
                 <i className="uil uil-image-upload"></i>
               </label>
 
-              <input type="file" name="profile" id="profile" />
+              <input
+                onChange={onUpload}
+                type="file"
+                name="profile"
+                id="profile"
+              />
             </div>
             <div className="form_group">
               <label htmlFor="name"> FullName</label>
@@ -132,8 +147,8 @@ const Contact = () => {
                   <div className="first">
                     <h4>Actions</h4>
                     <div className="buttons">
-                    <i className="uil uil-edit"></i>
-                     <i className="uil uil-trash-alt"></i>
+                      <i className="uil uil-edit"></i>
+                      <i className="uil uil-trash-alt"></i>
                     </div>
                   </div>
                 </div>
@@ -141,8 +156,6 @@ const Contact = () => {
             );
           })}
         </div>
-
-    
       </div>
     </>
   );

@@ -328,12 +328,14 @@ z-index: 800;
           align-items: center;
           justify-content: center;
           gap: 2rem;
-          img:first-child {
+       img:first-child {
             width: 85px;
             cursor: pointer;
             height: 85px;
             border: 2px solid white;
             border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
           }
 
           // img:nth-child(2) {
