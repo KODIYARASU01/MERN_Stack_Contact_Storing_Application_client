@@ -9,7 +9,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(#BFF098 , #6FD6FF);
+    background: linear-gradient(#bff098, #6fd6ff);
     clip-path: circle(20% at right 90%);
   }
 
@@ -20,7 +20,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(#667db6  , #0082c8);
+    background: linear-gradient(#667db6, #0082c8);
     clip-path: circle(14% at 5% 10%);
   }
 }
@@ -30,7 +30,7 @@ body {
   min-height: 100vh;
   height: 100vh;
   // background: linear-gradient(#764BA2    ,#667EEA);
-  background-image: url(../assets/5.jpg);
+  background-image: url(../assets/11.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,6 +43,34 @@ body {
   padding: 0rem 2rem 0px 2rem;
   background-color: aqua;
 
+  .bring_me_top {
+    display: none;
+
+    @media screen and (max-width: 900px) {
+      display: block;
+      position: fixed;
+      top: 100%;
+      right: 5%;
+      z-index: 800;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .bring_me_top {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    z-index: 800;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
   //Child one::after
   .contact_list_box {
     margin-top: 3rem;
@@ -62,12 +90,12 @@ body {
 
       h4 {
         letter-spacing: 1px;
-        color: #fff;
+        color: rgb(81, 65, 225);
         font-weight: 500;
         &::after {
           content: "";
-          height: 4px;
-          background-color: #b6b6b6;
+          height: 3px;
+          background-color: #bdc4c5;
           display: block;
           border-radius: 3px;
         }
@@ -141,9 +169,9 @@ body {
             justify-content: center;
             letter-spacing: 1px;
             width: 140px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: rgb(255, 255, 255);
+            font-size: 0.8rem;
+            font-weight: 550;
+            color: rgb(28, 7, 214);
             @media screen and (max-width: 900px) {
               justify-content: flex-start;
             }
@@ -163,14 +191,28 @@ body {
             justify-content: center;
             gap: 3rem;
 
-            img {
-              width: 25px;
-              height: 25px;
+            i:nth-child(1) {
+              font-size: 1.2rem;
+              color: rgb(61, 60, 60);
+              transition: scale 0.3s ease-in-out;
 
               cursor: pointer;
 
               &:hover {
-                box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.4);
+                scale: 1.02;
+                transition: scale 0.3s ease-in-out;
+              }
+            }
+            i:nth-child(2) {
+              font-size: 1.2rem;
+              color: red;
+              transition: scale 0.3s ease-in-out;
+
+              cursor: pointer;
+
+              &:hover {
+                scale: 1.02;
+                transition: scale 0.3s ease-in-out;
               }
             }
           }
@@ -217,13 +259,13 @@ body {
     }
     @media screen and (max-width: 500px) {
       width: 98%;
-      height: 100vh;
+      height: auto;
     }
   }
 
   //Child two
   .form_list_box {
-    margin: 4rem auto;
+    margin: 5rem auto;
     width: 30%;
     height: 75%;
     padding: 10px;
@@ -248,13 +290,12 @@ body {
         font-size: 1rem;
         font-weight: 600;
         letter-spacing: 1px;
-        color: #fff;
-        text-shadow: 4px 5px 2px rgba(108, 117, 235, 0.4);
+        color: rgb(81, 65, 225);
 
         &::after {
           content: "";
-          height: 4px;
-          background-color: #b6b6b6;
+          height: 3px;
+          background-color: #bdc4c5;
           display: block;
           border-radius: 3px;
         }
@@ -276,16 +317,33 @@ body {
         gap: 2rem;
 
         h4 {
-          font-size: 0.9rem;
+          font-size: 0.8rem;
           font-weight: 550;
           letter-spacing: 1px;
-          color: #fff;
+          color: #5f5d5d;
         }
-        img {
-          width: 85px;
-          height: 85px;
-          border: 2px solid white;
-          border-radius: 50%;
+        label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          img:first-child {
+            width: 85px;
+            cursor: pointer;
+            height: 85px;
+            border: 2px solid white;
+            border-radius: 50%;
+          }
+
+          // img:nth-child(2) {
+          //  mix-blend-mode: multiply;
+          // }
+
+          i {
+            font-size: 1.3rem;
+            color: green;
+            cursor: pointer;
+          }
         }
 
         input {
@@ -301,19 +359,23 @@ body {
         align-items: flex-start;
         justify-content: flex-start;
         padding: 10px;
-        gap: 0px;
+        gap: 10px;
         margin-top: 15px;
 
         label {
-          font-size: 0.9rem;
-          font-weight: 400;
-          color: #fff;
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: #5f5d5d;
           letter-spacing: 1px;
+
+          @media screen and (max-width: 900px) {
+            color: royalblue;
+          }
         }
         input {
           outline: none;
           width: 100%;
-          padding: 9px 1rem;
+          padding: 7px 1rem;
           border: transparent;
           background: transparent;
           border-bottom: 2px solid #ffffff;
@@ -326,6 +388,10 @@ body {
 
           &:focus {
             border-bottom: 2px solid #7472ff;
+          }
+
+          @media screen and (max-width: 900px) {
+            border-bottom: 2px solid #4d4c4c;
           }
         }
       }
@@ -488,7 +554,7 @@ body {
     }
     @media screen and (max-width: 500px) {
       width: 98%;
-      height: 80vh;
+      height: 75vh;
     }
   }
 
@@ -499,8 +565,8 @@ body {
     flex-wrap: wrap-reverse;
     padding: 1rem 0.1rem;
     overflow: auto;
-      // background: linear-gradient(#764BA2    ,#667EEA);
-    background-image: url(../assets/5.jpg);
+    // background: linear-gradient(#764BA2    ,#667EEA);
+    background-image: url(../assets/11.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -512,4 +578,3 @@ body {
     // flex-direction: column;
   }
 }
-

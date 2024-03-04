@@ -1,9 +1,7 @@
-import React from "react";
+import React,{useRef} from "react";
 import "./Contact.scss";
 import profile from "../assets/profile_1.jpg";
-import edit from "../assets/edit.gif";
-import trash from "../assets/trash.gif";
-
+import up from '../assets/sort_up.gif'
 let contacts = [
   {
     id: 1,
@@ -43,9 +41,17 @@ let contacts = [
   },
 ];
 const Contact = () => {
+  const myRef = useRef(null)
+
+  const executeScroll = () => myRef.current.scrollIntoView() 
   return (
     <>
-      <div className="contact_container">
+      <div className="contact_container"  >
+ 
+        <div className="bring_me_top">
+          <img onClick={executeScroll} src={up} alt="up" />
+     
+        </div>
         {/* //left side */}
         <div className="contact_list_box">
           <div className="contact_title">
@@ -74,18 +80,8 @@ const Contact = () => {
                   <div className="first">
                     <h4>Actions</h4>
                     <div className="buttons">
-                      <img
-                        width="48"
-                        height="48"
-                        src="https://img.icons8.com/color/48/create-new.png"
-                        alt="create-new"
-                      />
-                      <img
-                        width="32"
-                        height="32"
-                        src="https://img.icons8.com/stencil/32/trash.png"
-                        alt="trash"
-                      />
+                    <i className="uil uil-edit"></i>
+                     <i className="uil uil-trash-alt"></i>
                     </div>
                   </div>
                 </div>
@@ -95,7 +91,7 @@ const Contact = () => {
         </div>
 
         {/* Right Side */}
-        <div className="form_list_box">
+        <div className="form_list_box" ref={myRef}>
           <div className="form_title">
             <h4>Create Contact List</h4>
           </div>
@@ -103,8 +99,11 @@ const Contact = () => {
           <form action="">
             <div className=" profile">
               <h4>Upload their Photo</h4>
+
               <label htmlFor="profile">
                 <img src={profile} name="profile" alt="profile" />
+                {/* <img src={upload}  name="profile" alt="profile"  /> */}
+                <i className="uil uil-image-upload"></i>
               </label>
 
               <input type="file" name="profile" id="profile" />
