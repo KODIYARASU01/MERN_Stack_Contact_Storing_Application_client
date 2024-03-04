@@ -1,7 +1,7 @@
 import React,{useRef} from "react";
 import "./Contact.scss";
 import profile from "../assets/profile_1.jpg";
-import up from '../assets/sort_up.gif'
+import up from '../assets/sort_down.gif'
 let contacts = [
   {
     id: 1,
@@ -52,46 +52,8 @@ const Contact = () => {
           <img onClick={executeScroll} src={up} alt="up" />
      
         </div>
-        {/* //left side */}
-        <div className="contact_list_box">
-          <div className="contact_title">
-            <h4>All Contact Lists</h4>
-          </div>
-
-          {contacts.map((data, index) => {
-            return (
-              <div className="list" key={index}>
-                <div className="contact_profile">
-                  <img src={profile} alt="profile" />
-                </div>
-                <div className="contact_detail">
-                  <div className="first">
-                    <h4>Full Name</h4>
-                    <h3>{data.name}</h3>
-                  </div>
-                  <div className="first">
-                    <h4>Native Place</h4>
-                    <h3>{data.place}</h3>
-                  </div>
-                  <div className="first">
-                    <h4>Mobile Number</h4>
-                    <h3>{data.mobileNumber}</h3>
-                  </div>
-                  <div className="first">
-                    <h4>Actions</h4>
-                    <div className="buttons">
-                    <i className="uil uil-edit"></i>
-                     <i className="uil uil-trash-alt"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Right Side */}
-        <div className="form_list_box" ref={myRef}>
+            {/* Right Side */}
+            <div className="form_list_box" >
           <div className="form_title">
             <h4>Create Contact List</h4>
           </div>
@@ -142,6 +104,45 @@ const Contact = () => {
             </div>
           </form>
         </div>
+        {/* //left side */}
+        <div className="contact_list_box" ref={myRef}>
+          <div className="contact_title">
+            <h4>All Contact Lists</h4>
+          </div>
+
+          {contacts.map((data, index) => {
+            return (
+              <div className="list" key={index}>
+                <div className="contact_profile">
+                  <img src={profile} alt="profile" />
+                </div>
+                <div className="contact_detail">
+                  <div className="first">
+                    <h4>Full Name</h4>
+                    <h3>{data.name}</h3>
+                  </div>
+                  <div className="first">
+                    <h4>Native Place</h4>
+                    <h3>{data.place}</h3>
+                  </div>
+                  <div className="first">
+                    <h4>Mobile Number</h4>
+                    <h3>{data.mobileNumber}</h3>
+                  </div>
+                  <div className="first">
+                    <h4>Actions</h4>
+                    <div className="buttons">
+                    <i className="uil uil-edit"></i>
+                     <i className="uil uil-trash-alt"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+    
       </div>
     </>
   );
